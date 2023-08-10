@@ -2,6 +2,19 @@
 
 nvm use 18.17.1 
 
+!!! 
+TODO
+LocaStorage чистится после рефреша. Почему?
+Исправить
+
+- Сделать Infinite scroll
+https://levelup.gitconnected.com/implementing-infinite-scrolling-using-angular-82c66f27e817 
+
+- Сделать Login
+https://jasonwatmore.com/post/2022/11/29/angular-14-user-registration-and-login-example-tutorial
+
+
+
 ### Requirements:
 - Implement a login system using Angular to allow users to sign in with a username and password.
 - Infinite scroll on main page - Implement infinite scroll on the home page. The application should load more products automatically as the user scrolls down the page.

@@ -3,15 +3,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
 import { Cart, CartItem } from 'src/app/models/cart.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  cart = new BehaviorSubject<Cart>({items: []})
+ cart = new BehaviorSubject<Cart>({items: []})
+
+ // cart = new BehaviorSubject<any>( localStorage.getItem('cart'))
+  
   constructor(private _snackbar: MatSnackBar) { }
 
   addToCart(item: CartItem): void {
-    const items = [...this.cart.value.items];
+   const items = [...this.cart.value.items];
+  //  const items = [...this.cart];
+    // localStorage.setItem('cart', JSON.stringify(items))
 
     const itemInCart = items.find((_item) => _item.id === item.id) 
 
@@ -19,6 +25,7 @@ export class CartService {
       itemInCart.quantity += 1;
     } else {
       items.push(item);
+    
     }
 
     this.cart.next({ items });
@@ -29,7 +36,7 @@ export class CartService {
   }
 
   removeQuantity(item: CartItem): void {
-    let itemForRemoval: CartItem | undefined;
+    let itemForRemoval: CartItem | undefined ;
     let filteredItems = this.cart.value.items.map((_item) => {
       if(_item.id === item.id) {
         _item.quantity--;
