@@ -3,11 +3,13 @@
 nvm use 18.17.1 
 
 !!! 
-TODO
 LocaStorage чистится после рефреша. Почему?
 Исправить
 https://dev-academy.com/angular-local-storage/
+ИСПРАВЛЕНО!!! 
 
+!!!
+TODO
 - Сделать Infinite scroll
 
 Angular virtual scroller library 
