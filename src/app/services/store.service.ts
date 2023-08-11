@@ -18,6 +18,12 @@ export class StoreService {
     )
   }
 
+  getLimitedProducts(limit = '3'): Observable<Array<Product>> {
+    return this.httpClient.get<Array<Product>>(
+      `${FAKE_STORE_API}/products?limit=${limit}`
+    )
+  }
+
   getAllCategories(): Observable<Array<string>> {
     return this.httpClient.get<Array<string>>(
       `${FAKE_STORE_API}/products/categories`
