@@ -5,6 +5,10 @@ import  { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { StoreService } from 'src/app/services/store.service';
 
+import { HostListener } from '@angular/core';
+
+
+
 const ROWS_HEIGHT: {[id: number]: number} = {1: 400, 3: 335, 4: 350};
 
 @Component({
@@ -19,19 +23,40 @@ export class HomeComponent implements OnInit, OnDestroy {
   category: string | undefined;
   products: Array<Product> | undefined;
   sort = 'desc';
-  count = '12';
+  count = '1';
   productsSubscription: Subscription | undefined;
+
+
+ 
 
   constructor(private cartService: CartService, private storeService: StoreService) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    try {
+      this.getProducts();
+    } catch (error) {
+      console.log(error)
+    }
+  
   }
 
   getProducts(): void {
-   this.productsSubscription = this.storeService.getAllProducts(this.count, this.sort).subscribe((_products) => {
-      this.products =  _products;
-    });
+    
+      this.productsSubscription = this.storeService.getAllProducts(this.count, this.sort).subscribe((_products) => {
+        this.products =  _products;
+      
+    
+   
+      });
+  }
+
+  @HostListener("window:scroll", []) onWindowScroll() {
+    // do some stuff here when the window is scrolled
+    this.count += 1
+    this.getProducts()
+    const verticalOffset = window.pageYOffset 
+          || document.documentElement.scrollTop 
+          || document.body.scrollTop || 200;
   }
 
   onColumnsCountChange(colsNum: number): void {
@@ -70,3 +95,7 @@ ngOnDestroy(): void {
 }
 
 }
+function onWindowScroll() {
+  throw new Error('Function not implemented.');
+}
+

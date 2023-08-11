@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
+import { LocalService } from 'src/app/services/local.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  cart: Cart = {items: [{
+  cart: any = {items: [{
     product: 'https://via.placeholder.com/150',
     name: 'Sneackers',
     price: 150,
@@ -35,14 +36,23 @@ export class CartComponent implements OnInit {
     'action'
   ];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private localService: LocalService ) { }
 
   ngOnInit(): void {
    
     this.cartService.cart.subscribe((_cart: Cart) => {
-      this.cart = _cart;
-      this.dataSource = this.cart.items;
+     // this.cart = this.localService.getData('cart')
+       this.cart = _cart;
+     this.dataSource = this.cart.items;
+      
     })
+
+    // this.localService.cart.subscribe(() => {
+    //   this.cart = this.localService.getData('cart');
+    //   this.dataSource = this.cart.items;
+
+    // })
+
   } 
 
   getTotal(items: Array<CartItem>): number {
