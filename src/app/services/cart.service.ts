@@ -86,7 +86,7 @@ export class CartService {
   // const items = [...this.cart.value.items];
    const items = [...this.cart.value.items];
   //  const items = [...this.cart];
-    // localStorage.setItem('cart', JSON.stringify(items))
+     localStorage.setItem('cart', JSON.stringify(items))
 
     const itemInCart = items.find((_item) => _item.id === item.id) 
 

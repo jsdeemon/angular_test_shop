@@ -30,8 +30,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.cart.subscribe((_cart) => {
-       this.localStore.saveData('cart', JSON.stringify(_cart));
+      
          this.cart = _cart;
+        // this.localStore.saveData('cart', JSON.stringify(this.cart));
        // this.cart = this.localStore.getData('cart')
        //this.cart = (this.localStore.getData('cart'))
       // this.allItems = this.localStore.getData('cart')
