@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule } from '@angular/forms';
+
 import { MatSidenavModule } from '@angular/material/sidenav' 
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatMenuModule } from '@angular/material/menu'
@@ -26,6 +28,9 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CartService } from './services/cart.service';
 import { StoreService } from 'src/app/services/store.service';
 import { HttpClientModule } from '@angular/common/http';
+
+// import { VirtualScrollerModule } from '@iharbeck/ngx-virtual-scroller'
+
 
 @NgModule({
   declarations: [
@@ -53,7 +58,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule, 
+    FormsModule,
+    //VirtualScrollerModule
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent]

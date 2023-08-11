@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getProducts()
     const verticalOffset = window.pageYOffset 
           || document.documentElement.scrollTop 
-          || document.body.scrollTop || 200;
+          || document.body.scrollTop || 0;
   }
 
   onColumnsCountChange(colsNum: number): void {

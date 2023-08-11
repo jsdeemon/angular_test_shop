@@ -12,10 +12,21 @@ https://dev-academy.com/angular-local-storage/
 TODO
 - Сделать Infinite scroll
 
+ПО ЭТОЙ СТАТЬЕ
+https://medium.com/fafnur/%D0%B1%D0%B5%D1%81%D0%BA%D0%BE%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9-%D1%81%D0%BA%D1%80%D0%BE%D0%BB%D0%BB-%D0%B2-angular-9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-intersection-observer-api-5b46c5ad9996 
+
+npm install intersection-observer
+прописал полифиллы
+
 Angular virtual scroller library 
 https://www.youtube.com/watch?v=PetKs6326n4 
 
 ngx-virtual-scroller 
+
+add npm 
+npm i ngx-virtual-scroller
+add module 
+
 
 https://javascript.plainenglish.io/how-to-create-infinite-loading-with-angular-14-and-intersection-observer-3e0e679ade4c
 
