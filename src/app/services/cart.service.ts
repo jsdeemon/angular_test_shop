@@ -134,7 +134,8 @@ export class CartService {
 
   clearCart(): void {
     this.cart.next({ items: [] });
-    this.localStore.clearData();
+    // this.localStore.clearData();
+    this.localStore.removeData('cart')
     this._snackbar.open('Cart has been cleared', 'Ok', {duration: 3000});
   }
 
@@ -146,7 +147,8 @@ export class CartService {
       this._snackbar.open('1 item removed from cart', 'Ok', { duration: 3000 });
     }
 
-    this.localStore.clearData();
+    // this.localStore.clearData();
+    this.localStore.removeData('cart')
     this.localStore.saveData('cart', JSON.stringify(filteredItems))
     return filteredItems;
      
