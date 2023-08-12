@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Cart, CartItem } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
+import { AccountService } from 'src/app/services/account.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +12,12 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HeaderComponent {
 
+ // user: any = this.getUser() 
+  
   private _cart: Cart = { items: [] };
   itemsQuantity = 0;
+
+ 
 
   @Input() 
   get cart(): Cart {
@@ -26,7 +32,17 @@ export class HeaderComponent {
 
   }
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private accountService: AccountService) { }
+
+  
+
+  logout() {
+    this.accountService.logout();
+}
+
+// getUser() {
+//   return this.accountService.userValue;
+// }
 
   getTotal(items: Array<CartItem>): number {
     return this.cartService.getTotal(items);

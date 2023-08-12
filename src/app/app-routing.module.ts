@@ -4,6 +4,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { AuthGuard } from './helpers/auth.guard';
+import { LoginComponent } from './account/login.component';
+import { LayoutComponent } from './account/layout.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
