@@ -34,6 +34,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { ErrorInterceptor } from './helpers/error.interceptor'
 
 import { AlertComponent } from './components/alert/alert.component';
+import { ScrollService } from './services/scroll.service';
 // import { VirtualScrollerModule } from '@iharbeck/ngx-virtual-scroller'
 
 
@@ -71,6 +72,7 @@ import { AlertComponent } from './components/alert/alert.component';
   providers: [
     CartService, 
     StoreService,
+    ScrollService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
