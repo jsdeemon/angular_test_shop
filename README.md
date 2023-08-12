@@ -5,6 +5,7 @@ nvm use 18.17.1
 !!!
 TODO
 Implement a login system using Angular to allow users to sign in with a username and password. 
+СДЕЛАНо
 
 https://jasonwatmore.com/post/2022/11/29/angular-14-user-registration-and-login-example-tutorial 
 
