@@ -6,6 +6,8 @@ import { first } from 'rxjs/operators';
 import { AccountService } from '../services/account.service';
 import { AlertService } from '../services/alert.service';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
     form!: FormGroup;
@@ -17,7 +19,8 @@ export class RegisterComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private _snackbar: MatSnackBar
     ) { }
 
     ngOnInit() {
@@ -50,6 +53,7 @@ export class RegisterComponent implements OnInit {
                 next: () => {
                     this.alertService.success('Registration successful', { keepAfterRouteChange: true });
                     this.router.navigate(['../login'], { relativeTo: this.route });
+                    this._snackbar.open('You successfully registeres', 'Ok', { duration: 3000 });
                 },
                 error: error => {
                     this.alertService.error(error);
