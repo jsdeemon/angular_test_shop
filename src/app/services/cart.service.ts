@@ -53,49 +53,21 @@ export class CartService {
   cartItemsFromStorage: any = !!localStorage['cart'] ? JSON.parse(localStorage['cart']) : [];
   // itemsArray = cartItemsFromStorage ? cartItemsFromStorage : [];
 
-  cart = new BehaviorSubject<any>(
+  cart = new BehaviorSubject<Cart>(
      { items: this.cartItemsFromStorage }
-    // {items: []}
-  // {items: this.cartItemsFromStorage}
-   //  { items: this.cartItemsFromStorage ? this.cartItemsFromStorage : [] }
-       //  { items: JSON.parse(this.retrievedData.items) }
-       //JSON.parse(this.retrievedData)
      )
-    // console.log(this.document.window.localStorage.getItem('cart'))
-    // cart = {
-    //   items: this.localStore.getData('cart')
-    // }
-   
-
-    // getItemsFromLocalStorage(): Cart {
-    //  this.cart = this.localStore.getData('cart')
-    //  return this.cart
-    // }
-
-    checkStorage(): any {
-      let itms = []
-      if (localStorage['cart'] === true) {
-        itms = JSON.parse(localStorage['cart'])
-      } else {
-      
-      }
-      return itms;
-    }
-
+    
   addToCart(item: CartItem): void {
-  // const items = [...this.cart.value.items];
-   const items = [...this.cart.value.items];
-  //  const items = [...this.cart];
-     localStorage.setItem('cart', JSON.stringify(items))
+  
+  const items = [...this.cart.value.items];
+  localStorage.setItem('cart', JSON.stringify(items))
 
-    const itemInCart = items.find((_item) => _item.id === item.id) 
+  const itemInCart = items.find((_item) => _item.id === item.id) 
 
     if (itemInCart) {
       itemInCart.quantity += 1;
-   
     } else {
       items.push(item);
-    
     }
 
     this.cart.next({ items });
@@ -134,7 +106,6 @@ export class CartService {
 
   clearCart(): void {
     this.cart.next({ items: [] });
-    // this.localStore.clearData();
     this.localStore.removeData('cart')
     this._snackbar.open('Cart has been cleared', 'Ok', {duration: 3000});
   }
@@ -147,7 +118,6 @@ export class CartService {
       this._snackbar.open('1 item removed from cart', 'Ok', { duration: 3000 });
     }
 
-    // this.localStore.clearData();
     this.localStore.removeData('cart')
     this.localStore.saveData('cart', JSON.stringify(filteredItems))
     return filteredItems;

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   category: string | undefined;
   products: Array<Product> | undefined;
   sort = 'desc';
-  count = '3';
+  count = '6';
   productsSubscription: Subscription | undefined;
 
 
