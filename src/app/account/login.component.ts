@@ -6,6 +6,8 @@ import { first } from 'rxjs/operators';
 import { AccountService } from '../services/account.service';
 import { AlertService } from '../services/alert.service';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     form!: FormGroup;
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private _snackbar: MatSnackBar
     ) { }
 
     ngOnInit() {
@@ -49,6 +52,7 @@ export class LoginComponent implements OnInit {
                     // get return url from query parameters or default to home page
                     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
                     this.router.navigateByUrl(returnUrl);
+                    this._snackbar.open('You successfully logged in', 'Ok', { duration: 3000 });
                 },
                 error: error => {
                     this.alertService.error(error);
