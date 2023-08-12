@@ -8,7 +8,12 @@ import { AlertService } from '../services/alert.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({ 
+    selector: 'app-root',
+  template: `
+    <router-outlet></router-outlet>
+  `,
+    templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     form!: FormGroup;
     loading = false;

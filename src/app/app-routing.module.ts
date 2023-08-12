@@ -33,9 +33,11 @@ const routes: Routes = [
     path: 'cart',
     component: CartComponent
   },
+  // otherwise redirect to home
   {
-    path: '', redirectTo: 'home', pathMatch: 'full'
+    path: '*', redirectTo: 'home', 
   }
+  
 ];
 
 @NgModule({
@@ -44,14 +46,3 @@ exports: [RouterModule]
 })
 export class AppRoutingModule { }
 
-
-// import { NgModule } from '@angular/core';
-// import { RouterModule, Routes } from '@angular/router';
-
-// const routes: Routes = [];
-
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-// export class AppRoutingModule { }

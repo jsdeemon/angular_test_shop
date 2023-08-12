@@ -1,8 +1,9 @@
-<mat-toolbar class="max-w-7xl mx-auto border-x justify-between">
+<mat-toolbar *ngIf="getUser()" class="max-w-7xl mx-auto border-x justify-between">
     <div class="text-left"> 
         <a routerLink="home">App store</a>&nbsp;
     <button mat-icon-button class="btn btn-primary" (click)="logout()" >
         <mat-icon>logout</mat-icon> 
+       
     </button>
     </div>
     
