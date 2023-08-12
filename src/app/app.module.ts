@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatSidenavModule } from '@angular/material/sidenav' 
 import { MatGridListModule } from '@angular/material/grid-list'
@@ -27,8 +27,13 @@ import { ProductBoxComponent } from './pages/home/components/product-box/product
 import { CartComponent } from './pages/cart/cart.component';
 import { CartService } from './services/cart.service';
 import { StoreService } from 'src/app/services/store.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { fakeBackendProvider } from './helpers/fake-backend'
+import { JwtInterceptor } from './helpers/jwt.interceptor'
+import { ErrorInterceptor } from './helpers/error.interceptor'
+
+import { AlertComponent } from './components/alert/alert.component';
 // import { VirtualScrollerModule } from '@iharbeck/ngx-virtual-scroller'
 
 
@@ -40,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsHeaderComponent,
     FiltersComponent,
     ProductBoxComponent,
-    CartComponent
+    CartComponent,
+    AlertComponent
   ],
   imports: [
   BrowserModule,
@@ -62,7 +68,15 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     //VirtualScrollerModule
   ],
-  providers: [CartService, StoreService],
+  providers: [
+    CartService, 
+    StoreService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

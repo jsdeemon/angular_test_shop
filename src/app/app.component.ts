@@ -3,6 +3,9 @@ import { Cart } from 'src/app/models/cart.model';
 import { CartService } from './services/cart.service';
 import { LocalService } from './services/local.service';
 
+import { AccountService } from './services/account.service'; 
+import { User } from './models/user.model';
+
 @Component({
   selector: 'app-root',
   template: `
@@ -11,48 +14,33 @@ import { LocalService } from './services/local.service';
   `,
   styles: []
 })
+
 export class AppComponent implements OnInit {
- // values: any = JSON.parse(localStorage.getItem("cart"));
-  //cart: Cart = { items: []};
-// cart: any = localStorage.getItem('cart')
+  user?: User | null;
 
-  constructor(private cartService: CartService, private localStore: LocalService ) {}
 
-  // values = JSON.parse(this.localStore.getData('cart'));
-  // cart: Cart = { items: this.localStore.getData('cart') }; 
-  allItems = this.localStore.getData('cart');
-  //cart: any = { items: !this.allItems ? this.allItems : [] }; 
+  constructor(private cartService: CartService, private localStore: LocalService, private accountService: AccountService ) {
+    this.accountService.user.subscribe(x => this.user = x);
+  }
+
+  logout() {
+    this.accountService.logout();
+}
+
+ 
    cart: any = { items: [] }; 
-  // cart: any =  local!this.allItems ? this.allItems : [] Storage.getItem('cart'); 
-  
-  //json_items = this.allItems[0]
+ 
   
 
   ngOnInit(): void {
     this.cartService.cart.subscribe((_cart) => {
       
-         this.cart = _cart;
-        // this.localStore.saveData('cart', JSON.stringify(this.cart));
-       // this.cart = this.localStore.getData('cart')
-       //this.cart = (this.localStore.getData('cart'))
-      // this.allItems = this.localStore.getData('cart')
-       
-       
-      // this.cart = this.localStore.getData('cart');
+         this.cart = _cart; 
      
     })
   }
 
 
-
-
-  // ngOninit(): void {
-  //   this.localStore.getData('cart');
-  // }
-
-  ngOnDestroy() {
-    this.localStore.saveData('cart', JSON.stringify(this.cart));
-  }
 }
 
 
