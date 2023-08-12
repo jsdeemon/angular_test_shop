@@ -2,6 +2,21 @@
 
 nvm use 18.17.1 
 
+!!!
+TODO
+Implement a login system using Angular to allow users to sign in with a username and password. 
+
+https://jasonwatmore.com/post/2022/11/29/angular-14-user-registration-and-login-example-tutorial 
+
+https://github.com/cornflourblue/angular-14-registration-login-example 
+
+
+
+Implement appropriate error handling and display error messages in case of API failures or other errors. 
+
+
+
+
 !!! 
 LocaStorage чистится после рефреша. Почему?
 Исправить
@@ -9,8 +24,9 @@ https://dev-academy.com/angular-local-storage/
 ИСПРАВЛЕНО!!! 
 
 !!!
-TODO
+
 - Сделать Infinite scroll
+- СДЕЛАНО!!!
 
 ПО ЭТОЙ СТАТЬЕ
 https://medium.com/fafnur/%D0%B1%D0%B5%D1%81%D0%BA%D0%BE%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9-%D1%81%D0%BA%D1%80%D0%BE%D0%BB%D0%BB-%D0%B2-angular-9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-intersection-observer-api-5b46c5ad9996 
