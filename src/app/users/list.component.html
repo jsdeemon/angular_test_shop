@@ -1,31 +1,49 @@
-<h1 class="text-center">Users</h1>
-<a routerLink="add" class="btn-primary">Add User</a>
-<table class="table-auto">
-    <thead>
-        <tr>
-            <th style="width: 30%">First Name</th>
-            <th style="width: 30%">Last Name</th>
-            <th style="width: 30%">Username</th>
-            <th style="width: 10%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.username}}</td>
-            <td style="white-space: nowrap">
-                <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
-                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
-                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!user.isDeleting">Delete</span>
-                </button>
-            </td>
-        </tr>
-        <tr *ngIf="!users">
-            <td colspan="4" class="text-center">
-                <span class="text-center">No Users</span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <h1 class="text-center">Users</h1>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    First name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Username
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+            *ngFor="let user of users"
+            class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ user.firstName }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ user.lastName }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ user.username }}
+                </td>
+               
+                <td class="px-6 py-4">
+                    <a routerLink="edit/{{user.id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> &nbsp;
+                    <button
+                     (click)="deleteUser(user.id)" class="text-red-500 hover:text-red-700  font-bold py-2 px-4 rounded" [disabled]="user.isDeleting">
+                        <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                        <span *ngIf="!user.isDeleting">Delete</span>
+                    </button>
+                </td>
+            </tr>
+          
+        </tbody>
+    </table>
+</div>
+
+
