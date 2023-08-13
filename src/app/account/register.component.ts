@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService } from '../services/account.service';
-import { AlertService } from '../services/alert.service';
+// import { AlertService } from '../services/alert.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService,
+       // private alertService: AlertService,
         private _snackbar: MatSnackBar
     ) { }
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+       // this.alertService.clear();
 
         // stop here if form is invalid
         if (this.form.invalid) {
@@ -51,12 +51,13 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.alertService.success('Registration successful', { keepAfterRouteChange: true });
+                  //  this.alertService.success('Registration successful', { keepAfterRouteChange: true });
                     this.router.navigate(['../login'], { relativeTo: this.route });
                     this._snackbar.open('You successfully registeres', 'Ok', { duration: 3000 });
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this._snackbar.open('Registration failed', 'ERROR', { duration: 3000 })
+                  //  this.alertService.error(error);
                     this.loading = false;
                 }
             });

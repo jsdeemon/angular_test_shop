@@ -20,7 +20,7 @@ $ npm install -g @angular/cli@14.2.1
 $ ng serve
 ```
 - Open in web browser `http://localhost:4200`
-- Register
+- Register: `http://localhost:4200/account/register`
 - Login with your username and password
 
 
