@@ -41,17 +41,11 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
    
     this.cartService.cart.subscribe((_cart: Cart) => {
-     // this.cart = this.localService.getData('cart')
+
        this.cart = _cart;
      this.dataSource = this.cart.items;
       
     })
-
-    // this.localService.cart.subscribe(() => {
-    //   this.cart = this.localService.getData('cart');
-    //   this.dataSource = this.cart.items;
-
-    // })
 
   } 
 
