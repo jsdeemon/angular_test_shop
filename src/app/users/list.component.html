@@ -1,6 +1,6 @@
-<h1>Users</h1>
-<a routerLink="add" class="btn btn-sm btn-success mb-2">Add User</a>
-<table class="table table-striped">
+<h1 class="text-center">Users</h1>
+<a routerLink="add" class="btn-primary">Add User</a>
+<table class="table-auto">
     <thead>
         <tr>
             <th style="width: 30%">First Name</th>
@@ -24,7 +24,7 @@
         </tr>
         <tr *ngIf="!users">
             <td colspan="4" class="text-center">
-                <span class="spinner-border spinner-border-lg align-center"></span>
+                <span class="text-center">No Users</span>
             </td>
         </tr>
     </tbody>

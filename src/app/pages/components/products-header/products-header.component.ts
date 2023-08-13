@@ -32,7 +32,7 @@ export class ProductsHeaderComponent implements OnInit {
 
   onColumnsUpdated(colsNum: number): void {
     this.columnsCountChange.emit(colsNum)
-    console.log(colsNum)
+   // console.log(colsNum)
   }
 
 }
