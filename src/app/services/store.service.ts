@@ -50,6 +50,7 @@ export class StoreService {
       catchError((error: HttpErrorResponse) => {
         // error logging,  you can do a lot more, see below
         console.error('An error occurred:', error.error)
+        this._snackbar.open('Cannot load categories ' + error.message, 'ERROR', { duration: 3000 });
         return throwError(error)
       })
     )
