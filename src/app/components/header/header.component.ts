@@ -7,8 +7,7 @@ import { AccountService } from 'src/app/services/account.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styles: [
-  ]
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
 

@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
-const FAKE_STORE_API = 'https://fakestoreapi.com';
+
+const FAKE_STORE_API = environment.fakeStoreApiUrl; 
 
 @Injectable({
   providedIn: 'root'
