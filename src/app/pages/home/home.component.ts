@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   category: string | undefined;
   products: Array<Product> | undefined;
   sort = 'desc';
-  count = '6';
+  count = '9';
   productsSubscription: Subscription | undefined;
 
 
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private fetchMoreItems() {
     // add more items
-    this.itemCount += 3;
+    this.itemCount += 6;
     this.onItemsCountChange(this.itemCount)
   }
 
