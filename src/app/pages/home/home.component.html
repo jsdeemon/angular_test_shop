@@ -27,9 +27,10 @@ gutterSize="30"
     </app-product-box>
 </mat-grid-tile>
 
-<!-- <mat-card ngIf="products.length == 0">
-Error occured
-</mat-card> -->
+<mat-card *ngIf="products?.length === 0">
+  <h1 class="text-center">No items</h1>
+</mat-card>
+
 
 </mat-grid-list>
 </mat-drawer-content>
